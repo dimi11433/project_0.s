@@ -41,5 +41,10 @@ end_forward:
 backward_loop: #This is essentially like the first loop it needs to be iterated the opposite was
     bgt $t0, 9, end_backward #Exit loop when m>9 
     #Calculate starting index: (N + 20 -m) %9
+    addi $t2, $s0, 20 #$t2 = N + 20
+    sub $t2, $t2, $t0 #$t2 = N + 20 - m
+    li $t3, 9 #Modulus base
+    div $t2, $t3 #Divide by 9
+    mfhi $t2 #$t2 = remainder = (N+20-m) %9
     
     
