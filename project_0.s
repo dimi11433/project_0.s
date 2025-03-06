@@ -10,3 +10,9 @@ main:
 
     #Print the forward strings
     li $t0, 1 #Lets Initialize the m-counter (1-9)
+forward_loop:
+    bgt $t0, 9, end_forward #Exit loop when m > 9 (branch if greater than)
+    #Lets calculate the starting index: (n + N) % 9
+    add $t2, $t0, $s0 #$t2 = m + N
+    li $t3, 9 #Modulus base
+    div $t2, $t3 #Divide by 9
