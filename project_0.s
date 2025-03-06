@@ -68,5 +68,11 @@ backward_char_loop:
     j backward_char_loop
 end_backward_char:
     #Print newlinw after each string
+    li $a0, 10 #ASCII code for newline
+    li $v0, 11
+    syscall
+
+    addi $t0, $t0, 1 #Increment m-counter
+    j backward_char_loop
     
     
