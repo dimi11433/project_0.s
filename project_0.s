@@ -34,6 +34,13 @@ forward_char_loop:
 
     addi $t4, $t4, 1 #Increment character counter
     j forward_char_loop #Jump 
+end_forward_char:
+    #Print newline after eah string
+    li $a0, 10 #ASCII code for newline
+    li $v0, 11
+    syscall
+    addi $t0, $t0, 1 #Increment m-counter
+    j forward_loop 
 
 end_forward:
     #Now we print the Backward Strings
