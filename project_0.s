@@ -38,7 +38,8 @@ forward_char_loop:
 end_forward:
     #Now we print the Backward Strings
     li t0, 1 #We have to reset the m-counter (1-9)
-backward_loop:
-    bgt $t4, 8, end_backward_char #Exit after 9 characters
-    #We need to calculate the reversed position: 8 - ((start + i) %9)
-    add $t5, $t2, $t4 #$t5 = start_index + char_offset
+backward_loop: #This is essentially like the first loop it needs to be iterated the opposite was
+    bgt $t0, 9, end_backward #Exit loop when m>9 
+    #Calculate starting index: (N + 20 -m) %9
+    
+    
