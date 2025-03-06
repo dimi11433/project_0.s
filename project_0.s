@@ -56,5 +56,12 @@ backward_char_loop:
     mfhi $t5 #$t5 = effective position(0-8)
     li $t6, 8 #Max index for reversal 
     sub $t6, $t6, $t5 #Reverse position: 8 - position
+
+    #Load and print character 
+    la $t7, id #Load ID string address
+    add $t7, $t7, $t6 #Calculate reversed character address
+    lb $a0, 0($t7) #Load character from memory
+    li $v0, 11 #Syscall for printing character
+    syscall 
     
     
