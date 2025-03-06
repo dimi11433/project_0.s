@@ -63,5 +63,10 @@ backward_char_loop:
     lb $a0, 0($t7) #Load character from memory
     li $v0, 11 #Syscall for printing character
     syscall 
+
+    addi $t4, $t4, 1 #Increment character counter
+    j backward_char_loop
+end_backward_char:
+    #Print newlinw after each string
     
     
