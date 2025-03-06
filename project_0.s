@@ -46,5 +46,12 @@ backward_loop: #This is essentially like the first loop it needs to be iterated 
     li $t3, 9 #Modulus base
     div $t2, $t3 #Divide by 9
     mfhi $t2 #$t2 = remainder = (N+20-m) %9
+
+    li $t4, 0 #Character counter (0-8)
+backward_char_loop:
+    bgt $t4, 8, end_backward_char #Exit after 9 characters
+    #Calculate reversed position: 8 - ((start + i) %9)
+    add $t5, $t2, $t4  #$t5 = start_index + char_offset
+    div $t5, $t3 #Divide by 9 
     
     
