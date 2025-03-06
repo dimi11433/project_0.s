@@ -53,5 +53,8 @@ backward_char_loop:
     #Calculate reversed position: 8 - ((start + i) %9)
     add $t5, $t2, $t4  #$t5 = start_index + char_offset
     div $t5, $t3 #Divide by 9 
+    mfhi $t5 #$t5 = effective position(0-8)
+    li $t6, 8 #Max index for reversal 
+    sub $t6, $t6, $t5 #Reverse position: 8 - position
     
     
