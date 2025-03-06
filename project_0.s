@@ -81,7 +81,7 @@ end_backward_char:
     syscall
 
     addi $t0, $t0, 1 #Increment m-counter
-    j backward_char_loop
+    j backward_loop
 end_backward:
     #Print final newline This is according the the rules for this project
     li $a0, 10
