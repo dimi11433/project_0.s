@@ -16,3 +16,10 @@ forward_loop:
     add $t2, $t0, $s0 #$t2 = m + N
     li $t3, 9 #Modulus base
     div $t2, $t3 #Divide by 9
+    mfhi $t2 #$t2 = remainder of (m + N)%9
+
+    li $t4, 0 #This keeps track of how many characters were counted 
+forward_char_loop:
+    bgt $t4, 8, end_forward_char #This exits after 9 characters(branch if greater than)
+    #Lets calculate circular position: (start + i) % 9
+    add $t5, $t2, $t4 #$t5 = start_index + char_offset 
