@@ -31,6 +31,7 @@ forward_char_loop:
     add $t6, $t6, $t5 #Calculate character address
     lb $a0, 0($t6) #Load character from memory
     li $v0, 11 #Syscall for printing character
+    syscall
 
     addi $t4, $t4, 1 #Increment character counter
     j forward_char_loop #Jump 
@@ -81,7 +82,7 @@ end_backward_char:
 
     addi $t0, $t0, 1 #Increment m-counter
     j backward_char_loop
-end_backwaard:
+end_backward:
     #Print final newline This is according the the rules for this project
     li $a0, 10
     li $v0, 11
