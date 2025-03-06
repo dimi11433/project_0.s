@@ -22,4 +22,11 @@ forward_loop:
 forward_char_loop:
     bgt $t4, 8, end_forward_char #This exits after 9 characters(branch if greater than)
     #Lets calculate circular position: (start + i) % 9
-    add $t5, $t2, $t4 #$t5 = start_index + char_offset 
+    add $t5, $t2, $t4 #$t5 = start_index + char_offset
+    div $t5, $t3 #here we divide by 9
+    mfhi $t5 #$t5 is the effective position (0-8)
+
+    #Load and print Character
+    la $t6, id #Load ID string address
+    add $t6, $t6, $t5 #Calculate character address
+    lb $a0, 0($t6) #Load character from memory
