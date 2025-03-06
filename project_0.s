@@ -34,3 +34,11 @@ forward_char_loop:
 
     addi $t4, $t4, 1 #Increment character counter
     j forward_char_loop #Jump 
+
+end_forward:
+    #Now we print the Backward Strings
+    li t0, 1 #We have to reset the m-counter (1-9)
+backward_loop:
+    bgt $t4, 8, end_backward_char #Exit after 9 characters
+    #We need to calculate the reversed position: 8 - ((start + i) %9)
+    add $t5, $t2, $t4 #$t5 = start_index + char_offset
