@@ -30,3 +30,7 @@ forward_char_loop:
     la $t6, id #Load ID string address
     add $t6, $t6, $t5 #Calculate character address
     lb $a0, 0($t6) #Load character from memory
+    li $v0, 11 #Syscall for printing character
+
+    addi $t4, $t4, 1 #Increment character counter
+    j forward_char_loop #Jump 
